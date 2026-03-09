@@ -6,12 +6,17 @@ from django.urls import reverse
 from django.utils import timezone
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import get_user_model
+from django.contrib.auth import logout
+
 
 
 User = get_user_model()
 
 # Create your views here.
 
+def logout_view(request):
+    logout(request)
+    return redirect('/accounts/login/')
 
 @login_required
 def index(request):
